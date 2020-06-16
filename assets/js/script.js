@@ -10,12 +10,6 @@ $(document).ready(function () {
         query_param +
         "&APPID=" +
         appID;
-    } else if ($(this).prev().attr("placeholder") == "Zip Code") {
-      var weather =
-        "http://api.openweathermap.org/data/2.5/weather?zip=" +
-        query_param +
-        "&APPID=" +
-        appID;
     }
 
     $.getJSON(weather, function (json) {

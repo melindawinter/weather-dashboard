@@ -16,6 +16,11 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <!-- Reset CSS -->
     <link rel="stylesheet" href="assets/css/reset.css" />
     <!-- My custom CSS -->
@@ -28,39 +33,49 @@
 
   <!-- Begin body -->
   <body>
+    <!-- Jumbotron header -->
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4">Weather Dashboard</h1>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 text-center">
-        <input type="text" placeholder="City" /><button
-          type="button"
-          class="query_btn btn btn-default btn-sm"
-        >
-          Search</button
-        ><br />
-        <input type="text" placeholder="Zip Code" /><button
-          type="button"
-          class="query_btn btn btn-default btn-sm"
-        >
-          Search</button
-        ><br />
+    <!-- End jumbotron -->
+    <!-- Main container -->
+    <main class="container-fluid" style="background-color: lightgray;">
+      <div class="row py-5">
+        <!-- Card for search components -->
+        <div class="col-lg-4">
+          <div class="card border-dark">
+            <div class="card-body">
+              <h1 class="card-title">Search for a City:</h1>
+              <input type="text" placeholder="City" /><button
+                type="button"
+                class="query_btn btn btn-default btn-sm"
+              >
+                <i class="fa fa-search"></i></button
+              ><br />
+            </div>
+            <!-- This is where searched cities will appear -->
+            <ul id="searched-cities">
+              Test Text
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 text-center">
-        <h2>City: <span id="city"></span></h2>
-        <h2>Main Weather: <span id="main_weather"></span></h2>
-        <h2>Description: <span id="description_weather"></span></h2>
-        <img id="weather_image" src="" />
-        <h2>Temperature: <span id="temperature"></span></h2>
-        <h2>Pressure: <span id="pressure"></span></h2>
-        <h2>Humidity: <span id="humidity"></span></h2>
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+          <h2>City: <span id="city"></span></h2>
+          <h2>Main Weather: <span id="main_weather"></span></h2>
+          <h2>Description: <span id="description_weather"></span></h2>
+          <img id="weather_image" src="" />
+          <h2>Temperature: <span id="temperature"></span></h2>
+          <h2>Pressure: <span id="pressure"></span></h2>
+          <h2>Humidity: <span id="humidity"></span></h2>
+        </div>
       </div>
-    </div>
+    </main>
+
     <!-- For Bootstrap, jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -83,6 +98,7 @@
     <!-- End my JavaScript -->
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   </body>
   <!-- End body -->
 </html>
