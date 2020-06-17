@@ -40,6 +40,7 @@
       </div>
     </div>
     <!-- End jumbotron -->
+
     <!-- Main container -->
     <main class="container-fluid" style="background-color: lightgray;">
       <div class="row py-5">
@@ -61,21 +62,91 @@
             </ul>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 text-center">
-          <h2>City: <span id="city"></span></h2>
-          <h2>Main Weather: <span id="main_weather"></span></h2>
-          <h2>Description: <span id="description_weather"></span></h2>
-          <img id="weather_image" src="" />
-          <h2>Temperature: <span id="temperature"></span></h2>
-          <h2>Pressure: <span id="pressure"></span></h2>
-          <h2>Humidity: <span id="humidity"></span></h2>
+        <!-- Card for searched city information -->
+
+        <div class="col-lg-6">
+          <div class="card border-dark">
+            <div class="card-body">
+              <h2>City: <span id="city"></span></h2>
+              <h2>Main Weather: <span id="main_weather"></span></h2>
+              <h2>Description: <span id="description_weather"></span></h2>
+              <img id="weather_image" src="" />
+              <h2>Temperature: <span id="temperature"></span></h2>
+              <h2>Pressure: <span id="pressure"></span></h2>
+              <h2>Humidity: <span id="humidity"></span></h2>
+              <h2>UV: <span id="uv"></span></h2>
+            </div>
+          </div>
         </div>
       </div>
-    </main>
 
+      <!-- Cards for 5 day forecast -->
+      <!-- Begin 5 day heading -->
+      <header class="row py-5">
+        <div class="col-sm-12">
+          <h1>Five Day Forecast</h1>
+        </div>
+      </header>
+      <!-- End 5 day heading -->
+      <div class="row py-5" id="five">
+        <!-- Day 1 -->
+        <article class="col-sm-2 d-flex align-items-stretch">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Day 1</h5>
+              <p class="card-text">
+                This is where the weather info goes
+              </p>
+            </div>
+          </div>
+        </article>
+        <!-- Day 2 -->
+        <article class="col-sm-2 d-flex align-items-stretch">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Day 2</h5>
+              <p class="card-text">
+                This is where the weather info goes
+              </p>
+            </div>
+          </div>
+        </article>
+        <!-- Day 3 -->
+        <article class="col-sm-2 d-flex align-items-stretch">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Day 3</h5>
+              <p class="card-text">
+                This is where the weather info goes
+              </p>
+            </div>
+          </div>
+        </article>
+        <!-- Day 4 -->
+        <article class="col-sm-2 d-flex align-items-stretch">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Day 4</h5>
+              <p class="card-text">
+                This is where the weather info goes
+              </p>
+            </div>
+          </div>
+        </article>
+        <!-- Day 5 -->
+        <article class="col-sm-2 d-flex align-items-stretch">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Day 5</h5>
+              <p class="card-text">
+                This is where the weather info goes
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
     <!-- For Bootstrap, jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
