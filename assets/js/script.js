@@ -1,9 +1,22 @@
 $(document).ready(function () {
-  // var appID = "5e9fabbb04f6d4dfc5866a965bc0007c";
+  var appID = "5e9fabbb04f6d4dfc5866a965bc0007c";
 
+  var cities = [""];
+
+  function renderCities() {
+    $("#searched-cities").empty();
+    for (var i = 0; i < cities.length; i++) {
+      var a = $("<button>");
+      a.addClass("city");
+      a.attr("data-name", cities[i]);
+      $("#searched-cities").append(a);
+    }
+  }
   $("#query-btn").on("click", function (event) {
     event.preventDefault();
-    var city = $("#city-input").val();
+    var city = $("#city-input").val().trim();
+    cities.push(city);
+    renderCities();
 
     var queryURL =
       "http://api.openweathermap.org/data/2.5/weather?q=" +
@@ -15,10 +28,13 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (response) {
       console.log(response);
-      $("#searched-cities").text(JSON.stringify(response));
+      $("#city-name").text(JSON.stringify(response));
     });
+    renderCities();
   });
 });
+
+// });
 
 // $(document).ready(function () {
 //   var appID = "5e9fabbb04f6d4dfc5866a965bc0007c";
@@ -48,4 +64,4 @@ $(document).ready(function () {
 //       $("#uv").html(json.main.uvindex);
 //     });
 //   });
-// });
+// })
