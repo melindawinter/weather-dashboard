@@ -1,6 +1,25 @@
 $(document).ready(function () {
-  var appID = "5e9fabbb04f6d4dfc5866a965bc0007c";
+  // var appID = "5e9fabbb04f6d4dfc5866a965bc0007c";
+
+  $("#query-btn").on("click", function (event) {
+    event.preventDefault();
+    var city = $("#city-input").val();
+
+    var queryURL =
+      "http://api.openweathermap.org/data/2.5/weather?q=" +
+      city +
+      "&apikey=5e9fabbb04f6d4dfc5866a965bc0007c";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (response) {
+      console.log(response);
+      $("#searched-cities").text(JSON.stringify(response));
+    });
+  });
 });
+
 // $(document).ready(function () {
 //   var appID = "5e9fabbb04f6d4dfc5866a965bc0007c";
 
