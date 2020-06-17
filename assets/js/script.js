@@ -1,14 +1,29 @@
 $(document).ready(function () {
   var appID = "5e9fabbb04f6d4dfc5866a965bc0007c";
 
-  var cities = [""];
+  var cities = [];
+  function displayCityInfo() {
+    var city = $(this).attr("data-name");
+    var queryURL =
+      "http://api.openweathermap.org/data/2.5/weather?q=" +
+      city +
+      "&apikey=5e9fabbb04f6d4dfc5866a965bc0007c";
 
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (response) {
+      console.log(response);
+      $("#city-name").text(JSON.stringify(response));
+    });
+  }
   function renderCities() {
     $("#searched-cities").empty();
     for (var i = 0; i < cities.length; i++) {
       var a = $("<button>");
       a.addClass("city");
       a.attr("data-name", cities[i]);
+      a.text(cities[i]);
       $("#searched-cities").append(a);
     }
   }
@@ -30,6 +45,7 @@ $(document).ready(function () {
       console.log(response);
       $("#city-name").text(JSON.stringify(response));
     });
+    $(document).on("click", ".city", displayCityInfo);
     renderCities();
   });
 });

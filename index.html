@@ -49,16 +49,20 @@
           <div class="card border-dark">
             <div class="card-body">
               <h1 class="card-title">Search for a City:</h1>
-              <input type="text" id="city-input" placeholder="City" /><button
-                type="button"
-                class="btn btn-default btn-sm"
-                id="query-btn"
-              >
-                <i class="fa fa-search"></i></button
-              ><br />
+              <form id="city-form" method="POST">
+                <input type="text" id="city-input" placeholder="City" /><button
+                  type="button"
+                  class="btn btn-default btn-sm"
+                  id="query-btn"
+                >
+                  <i class="fa fa-search"></i>
+                </button>
+              </form>
+              <br />
             </div>
             <!-- This is where searched cities will appear -->
-            <div id="searched-cities"></div>
+
+            <ul id="searched-cities"></ul>
           </div>
         </div>
 
