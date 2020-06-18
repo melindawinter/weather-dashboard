@@ -42,7 +42,7 @@
     <!-- End jumbotron -->
 
     <!-- Main container -->
-    <main class="container-fluid" style="background-color: lightgray;">
+    <main class="container-fluid">
       <div class="row py-5">
         <!-- Card for search components -->
         <div class="col-lg-4">
@@ -71,14 +71,18 @@
         <div class="col-lg-6">
           <div class="card border-dark">
             <div class="card-body">
-              <h2>City: <span id="city-name"></span></h2>
-              <h2>Main Weather: <span id="main-weather"></span></h2>
-              <h2>Description: <span id="description-weather"></span></h2>
-              <img id="weather-image" src="" />
+              <h2>
+                <span id="city-name"></span> <span id="currentDay"></span>
+                <img id="weather-image" src="" />
+              </h2>
+              <!-- <h2>Main Weather: <span id="main-weather"></span></h2> -->
+              <!-- <h2>Description: <span id="description-weather"></span></h2> -->
+
               <h2>Temperature: <span id="temperature"></span></h2>
-              <h2>Pressure: <span id="pressure"></span></h2>
+              <!-- <h2>Pressure: <span id="pressure"></span></h2> -->
               <h2>Humidity: <span id="humidity"></span></h2>
-              <h2>UV: <span id="uv"></span></h2>
+              <h2>Wind Speed: <span id="wind"></span></h2>
+              <h2>UV Index: <span id="uv"></span></h2>
             </div>
           </div>
         </div>

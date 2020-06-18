@@ -4,13 +4,15 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: dimgrey;
+}
 /* Styling for the jumbotron */
 .jumbotron {
   text-align: center;
-  background-color: black;
+  background-color: deeppink;
   color: white;
-  border-bottom: 10px solid black;
-  border-top: 10px solid black;
+
   padding-top: 20px;
   padding-bottom: 20px;
 }
