@@ -1,5 +1,6 @@
 //Prepping the document
 $(document).ready(function () {
+  var history = JSON.parse(window.localStorage.getItem("history")) || [];
   //Open Weather Map api key
   var APIKey = "5e9fabbb04f6d4dfc5866a965bc0007c";
   //Array for searched cities
@@ -11,9 +12,11 @@ $(document).ready(function () {
   $("#query-btn").on("click", function (event) {
     event.preventDefault();
     var city = $("#city-input").val().trim();
+    console.log(city);
     cities.push(city);
     renderCities();
 
+    // function searchWeather {
     var queryURL =
       "http://api.openweathermap.org/data/2.5/weather?q=" +
       city +
@@ -39,6 +42,9 @@ $(document).ready(function () {
       // Display wind speed
       $("#wind").text(response.wind.speed + " MPH");
 
+      history.push(city);
+      window.localStorage.setItem("history", JSON.stringify(history));
+
       //This is to get the UV index
       var lat = response.coord.lat;
       var lon = response.coord.lon;
@@ -59,17 +65,46 @@ $(document).ready(function () {
       });
     });
 
-    // var forecastURL =
-    //   "http://api.openweathermap.org/data/2.5/forecast?q=" +
-    //   city +
-    //   "&apikey=5e9fabbb04f6d4dfc5866a965bc0007c";
+    var forecastURL =
+      "http://api.openweathermap.org/data/2.5/forecast?q=" +
+      city +
+      "&apikey=5e9fabbb04f6d4dfc5866a965bc0007c&units=imperial";
 
-    // $.ajax({
-    //   url: forecastURL,
-    //   method: "GET",
-    // }).then(function (forecast) {
-    //   console.log(forecastURL);
-    //   console.log(forecast);
+    $.ajax({
+      url: forecastURL,
+      method: "GET",
+    }).then(function (forecast) {
+      console.log(forecastURL);
+      console.log(forecast);
+      for (var i = 0; i < forecast.list.length; i++) {
+        if (forecast.list[i].dt_txt.indexOf("15:00:00") !== -1) {
+          var card = $("<div>").addClass("card text-white bg-primary");
+          var col = $("<div>").addClass("col-sm-2");
+          var cardBody = $("<div>").addClass("card-body");
+          var cardTitle = $("<h3>")
+            .addClass("card-title")
+            .text(new Date(forecast.list[i].dt_txt).toLocaleDateString());
+          var cardImage = $("<img>").attr(
+            "src",
+            "http://openweathermap.org/img/w/" +
+              forecast.list[i].weather[0].icon +
+              ".png"
+          );
+          var cardTemp = $("<p>")
+            .addClass("card-text")
+            .text("Temp:" + forecast.list[i].main.temp_max + "\u00b0");
+          var cardHum = $("<p>")
+            .addClass("card-text")
+            .text("Humidity:" + forecast.list[i].main.humidity + "%");
+          col.append(
+            card.append(
+              cardBody.append(cardTitle, cardImage, cardTemp, cardHum)
+            )
+          );
+          $("#forecast").append(col);
+        }
+      }
+    });
   });
 
   renderCities();
@@ -138,5 +173,7 @@ $(document).ready(function () {
         $("#uv").text(UVresponse.value);
       });
     });
+  }
+  if (history.length > 0) {
   }
 });

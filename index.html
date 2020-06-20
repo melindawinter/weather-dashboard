@@ -68,122 +68,34 @@
       </div>
     </div>
 
-<!-- Container for today's weather and forecast -->
+    <!-- Container for today's weather and forecast -->
     <div class="container-fluid" style="background-color: pink;">
-    <!-- Card for searched city information -->
+      <!-- Card for searched city information -->
 
-    <div class="col-lg-6">
-      <div class="card border-dark">
-        <div class="card-body">
-          <div class="card-header">
-            Weather in Your City
-            <span id="currentDay"> </span><img id="weather-image" src="" />
+      <div class="col-lg-6">
+        <div class="card border-dark">
+          <div class="card-body">
+            <div class="card-header">
+              Weather in Your City
+              <span id="currentDay"> </span><img id="weather-image" src="" />
+            </div>
+            <span id="city-name"></span>
+
+            <h2>Temperature: <span id="temperature"></span></h2>
+            <h2>Humidity: <span id="humidity"></span></h2>
+            <h2>Wind Speed: <span id="wind"></span></h2>
+            <h2>UV Index: <span id="uv"></span></h2>
           </div>
-          <span id="city-name"></span>
-
-          <h2>Temperature: <span id="temperature"></span></h2>
-          <h2>Humidity: <span id="humidity"></span></h2>
-          <h2>Wind Speed: <span id="wind"></span></h2>
-          <h2>UV Index: <span id="uv"></span></h2>
         </div>
       </div>
     </div>
-
     <!-- Cards for 5 day forecast -->
-    <!-- <div class="container-sm pb-5" style="background-color: white;"> -->
-      <!-- Begin heading -->
-      <header class="row py-5">
-        <div class="col-sm-12">
-          <h3>Five Day Forecast</h3>
-        </div>
-      </header>
-      <!-- End heading -->
+    <div
+      id="forecast"
+      class="container-sm pb-5 row"
+      style="background-color: white;"
+    ></div>
 
-      <!-- Begin forecast cards -->
-      <div class="row">
-        <!-- Day 1 -->
-        <div class="col-sm-1 d-flex align-items-stretch">
-          <div class="card" style="background-color: lightskyblue;">
-            <div class="card-body">
-              <h5 class="card-title forecast-date"></h5>
-              <div><img id="weather-image" src="" /></div>
-              <p class="card-text forecast-temp">
-                Temp:
-              </p>
-              <p class="card-text forecast-humidity">
-                Humidity:
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- End Day 1 -->
-        <!-- Day 2 -->
-        <div class="col-sm-1 d-flex align-items-stretch">
-          <div class="card" style="background-color: lightskyblue;">
-            <div class="card-body">
-              <h5 class="card-title forecast-date"></h5>
-              <div><img id="weather-image" src="" /></div>
-              <p class="card-text forecast-temp">
-                Temp:
-              </p>
-              <p class="card-text forecast-humidity">
-                Humidity:
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- End Day 2 -->
-        <!-- Day 3 -->
-        <div class="col-sm-1 d-flex align-items-stretch">
-          <div class="card" style="background-color: lightskyblue;">
-            <div class="card-body">
-              <h5 class="card-title forecast-date"></h5>
-              <div><img id="weather-image" src="" /></div>
-              <p class="card-text forecast-temp">
-                Temp:
-              </p>
-              <p class="card-text forecast-humidity">
-                Humidity:
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- End Day 3 -->
-        <!-- Day  4-->
-        <div class="col-sm-1 d-flex align-items-stretch">
-          <div class="card" style="background-color: lightskyblue;">
-            <div class="card-body">
-              <h5 class="card-title forecast-date"></h5>
-              <div><img id="weather-image" src="" /></div>
-              <p class="card-text forecast-temp">
-                Temp:
-              </p>
-              <p class="card-text forecast-humidity">
-                Humidity:
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- End Day 4 -->
-        <!-- Day 5 -->
-        <div class="col-sm-1 d-flex align-items-stretch">
-          <div class="card" style="background-color: lightskyblue;">
-            <div class="card-body">
-              <h5 class="card-title forecast-date"></h5>
-              <div><img id="weather-image" src="" /></div>
-              <p class="card-text forecast-temp">
-                Temp:
-              </p>
-              <p class="card-text forecast-humidity">
-                Humidity:
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- End Day 5 -->
-      </div>
-    </div>
-  </div>
     <!-- For Bootstrap, jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
