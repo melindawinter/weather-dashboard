@@ -15,8 +15,10 @@ $(document).ready(function () {
     console.log(city);
     cities.push(city);
     renderCities();
+    searchWeather(city);
+  });
 
-    // function searchWeather {
+  function searchWeather(city) {
     var queryURL =
       "http://api.openweathermap.org/data/2.5/weather?q=" +
       city +
@@ -74,6 +76,7 @@ $(document).ready(function () {
       url: forecastURL,
       method: "GET",
     }).then(function (forecast) {
+      $("#forecast").empty();
       console.log(forecastURL);
       console.log(forecast);
       for (var i = 0; i < forecast.list.length; i++) {
@@ -105,14 +108,15 @@ $(document).ready(function () {
         }
       }
     });
-  });
+  }
 
   renderCities();
   //This function adds each searched city to the history list as a button
   function renderCities() {
     $("#searched-cities").empty();
     for (var i = 0; i < cities.length; i++) {
-      var a = $("<button>");
+      var a = $("<li>");
+      a.addClass("list-group-item btn btn-light");
       a.addClass("city");
       a.attr("data-name", cities[i]);
       a.text(cities[i]);
@@ -124,55 +128,7 @@ $(document).ready(function () {
   //This function displays the weather info for a city when its button is clicked in the search history
   function displayCityInfo() {
     var city = $(this).attr("data-name");
-    var queryURL =
-      "http://api.openweathermap.org/data/2.5/weather?q=" +
-      city +
-      "&apikey=5e9fabbb04f6d4dfc5866a965bc0007c";
-
-    var queryURL =
-      "http://api.openweathermap.org/data/2.5/weather?q=" +
-      city +
-      "&apikey=5e9fabbb04f6d4dfc5866a965bc0007c";
-
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-    }).then(function (response) {
-      // Display city name, current date, and weather image
-      $("#city-name").text(response.name);
-
-      $("#weather-image").attr(
-        "src",
-        "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
-      );
-
-      // Display temperature in fahrenheit
-      var tempF = (response.main.temp - 273.15) * 1.8 + 32;
-      $("#temperature").text(tempF.toFixed(2) + "\u00b0");
-      // Display humidity
-      $("#humidity").text(response.main.humidity + "%");
-      // Display wind speed
-      $("#wind").text(response.wind.speed + " MPH");
-
-      //This is to get the UV index
-      var lat = response.coord.lat;
-      var lon = response.coord.lon;
-
-      var urlUV =
-        "http://api.openweathermap.org/data/2.5/uvi?appid=" +
-        APIKey +
-        "&lat=" +
-        lat +
-        "&lon=" +
-        lon;
-
-      $.ajax({
-        url: urlUV,
-        method: "GET",
-      }).then(function (UVresponse) {
-        $("#uv").text(UVresponse.value);
-      });
-    });
+    searchWeather(city);
   }
   if (history.length > 0) {
   }
