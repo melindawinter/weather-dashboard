@@ -58,11 +58,21 @@ $(document).ready(function () {
         $("#uv").text(UVresponse.value);
       });
     });
-    //This allows the search information to be displayed when a button is clicked in the history
-    $(document).on("click", ".city", displayCityInfo);
-    renderCities();
+
+    // var forecastURL =
+    //   "http://api.openweathermap.org/data/2.5/forecast?q=" +
+    //   city +
+    //   "&apikey=5e9fabbb04f6d4dfc5866a965bc0007c";
+
+    // $.ajax({
+    //   url: forecastURL,
+    //   method: "GET",
+    // }).then(function (forecast) {
+    //   console.log(forecastURL);
+    //   console.log(forecast);
   });
 
+  renderCities();
   //This function adds each searched city to the history list as a button
   function renderCities() {
     $("#searched-cities").empty();
@@ -74,7 +84,8 @@ $(document).ready(function () {
       $("#searched-cities").append(a);
     }
   }
-
+  //This allows the search information to be displayed when a button is clicked in the history
+  $(document).on("click", ".city", displayCityInfo);
   //This function displays the weather info for a city when its button is clicked in the search history
   function displayCityInfo() {
     var city = $(this).attr("data-name");
