@@ -14,6 +14,7 @@ $(document).ready(function () {
     var city = $("#city-input").val().trim();
     console.log(city);
     cities.push(city);
+
     renderCities();
     searchWeather(city);
   });
