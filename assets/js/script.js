@@ -38,7 +38,7 @@ $(document).ready(function () {
 
       // Display temperature in fahrenheit
       var tempF = (response.main.temp - 273.15) * 1.8 + 32;
-      $("#temperature").text(tempF.toFixed(2) + "\u00b0");
+      $("#temperature").text(tempF.toFixed(2) + "\u00b0F");
       // Display humidity
       $("#humidity").text(response.main.humidity + "%");
       // Display wind speed
@@ -81,7 +81,7 @@ $(document).ready(function () {
       console.log(forecast);
       for (var i = 0; i < forecast.list.length; i++) {
         if (forecast.list[i].dt_txt.indexOf("15:00:00") !== -1) {
-          var card = $("<div>").addClass("card text-white bg-primary");
+          var card = $("<div>").addClass("card text-white forecast-card");
           var col = $("<div>").addClass("col-sm-2");
           var cardBody = $("<div>").addClass("card-body");
           var cardTitle = $("<h3>")
@@ -95,7 +95,7 @@ $(document).ready(function () {
           );
           var cardTemp = $("<p>")
             .addClass("card-text")
-            .text("Temp:" + forecast.list[i].main.temp_max + "\u00b0");
+            .text("Temp:" + forecast.list[i].main.temp_max + "\u00b0F");
           var cardHum = $("<p>")
             .addClass("card-text")
             .text("Humidity:" + forecast.list[i].main.humidity + "%");
@@ -116,7 +116,7 @@ $(document).ready(function () {
     $("#searched-cities").empty();
     for (var i = 0; i < cities.length; i++) {
       var a = $("<li>");
-      a.addClass("list-group-item btn btn-light");
+      a.addClass("list-group-item btn");
       a.addClass("city");
       a.attr("data-name", cities[i]);
       a.text(cities[i]);

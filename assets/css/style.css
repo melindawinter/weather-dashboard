@@ -5,14 +5,65 @@
 }
 
 body {
-  background-color: dimgrey;
+  background-color: #87ceeb;
 }
-/* Styling for the jumbotron */
-.jumbotron {
+/* Styling for the header */
+header {
   text-align: center;
-  background-color: darkblue;
+  background-color: #15446f;
   color: white;
-
+  font-size: 40px;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.card-header {
+  font-size: 30px;
+  color: white;
+  background-color: #567e9c;
+}
+
+#city-input {
+  border: solid #15446f 3px;
+  padding: 2px 2px;
+}
+
+#query-btn {
+  background-color: #15446f;
+  color: white;
+  height: 50px;
+}
+
+.list-group-item {
+  background-color: #15446f;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card-body {
+  font-size: 20px;
+  line-height: 2.5rem;
+}
+
+.five-day {
+  font-size: 30px;
+  color: white;
+  background-color: #567e9c;
+  margin: 50px 10px;
+  padding: 25px;
+  border: solid 1px black;
+}
+
+.forecast-card {
+  background-color: #15446f;
+  margin-bottom: 25px;
+}
+
+.card-text {
+  font-size: 16px;
+}
+
+#forecast {
+  margin-bottom: 50px;
 }

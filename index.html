@@ -33,69 +33,81 @@
 
   <!-- Begin body -->
   <body>
-    <!-- Jumbotron header -->
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h1 class="display-4">Weather Dashboard</h1>
-      </div>
-    </div>
-    <!-- End jumbotron -->
+    <!-- Header -->
+    <header>
+      <h1>Weather Dashboard</h1>
+    </header>
+    <!-- End header -->
 
-    <!-- Container for search elements -->
-    <div class="container-fluid" style="background-color: blue;">
-      <div class="row py-5">
-        <!-- Card for search components -->
-        <div class="col-lg-4">
-          <div class="card border-dark">
-            <div class="card-body">
-              <h1 class="card-title">Search for a City:</h1>
-              <form id="city-form" method="POST">
-                <input type="text" id="city-input" placeholder="City" /><button
-                  type="button"
-                  class="btn btn-default btn-sm"
-                  id="query-btn"
-                >
-                  <i class="fa fa-search"></i>
-                </button>
-              </form>
-              <br />
+    <main>
+      <!-- Container for search elements -->
+      <div class="container py-5">
+        <div class="row mb-5">
+          <div class="col-sm-6" style="background-color: #45c1f0;">
+            <!-- Card for search components -->
+            <!-- <div class="col-sm-4"> -->
+
+            <div class="card border-dark mb-5 mt-5">
+              <h2 class="card-header">Search for a City</h2>
+              <div class="card-body">
+                <form id="city-form" method="POST">
+                  <input
+                    type="text"
+                    id="city-input"
+                    placeholder="City"
+                  /><button
+                    type="button"
+                    class="btn btn-default btn-sm"
+                    id="query-btn"
+                  >
+                    <i class="fa fa-search"></i>
+                  </button>
+                </form>
+                <br />
+              </div>
+              <!-- This is where searched cities will appear -->
+
+              <ul id="searched-cities"></ul>
             </div>
-            <!-- This is where searched cities will appear -->
+          </div>
 
-            <ul id="searched-cities"></ul>
+          <!-- Container for today's weather and forecast -->
+
+          <!-- Card for searched city information -->
+          <!-- <div class="container-fluid" style="background-color: pink;"> -->
+
+          <div class="col-sm-6" style="background-color: #45c1f0;">
+            <div class="card mb-5 mt-5 border-dark">
+              <h2 class="card-header">
+                Weather in Your City
+                <span id="currentDay"> </span><img id="weather-image" src="" />
+              </h2>
+              <div class="card-body">
+                <p>City Name: <span id="city-name"></span></p>
+                <p>Temperature: <span id="temperature"></span></p>
+                <p>Humidity: <span id="humidity"></span></p>
+                <p>Wind Speed: <span id="wind"></span></p>
+                <p>UV Index: <span id="uv"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards for 5 day forecast -->
+        <div class="row">
+          <div class="col-sm-12" style="background-color: #45c1f0;">
+            <h2 class="five-day">Five Day Forecast</h2>
+
+            <div
+              id="forecast"
+              class="col-sm-12 row mt-5"
+              style="background-color: #45c1f0; justify-content: center;"
+            ></div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Container for today's weather and forecast -->
-    <div class="container-fluid" style="background-color: pink;">
-      <!-- Card for searched city information -->
-
-      <div class="col-lg-6">
-        <div class="card border-dark">
-          <div class="card-body">
-            <div class="card-header">
-              Weather in Your City
-              <span id="currentDay"> </span><img id="weather-image" src="" />
-            </div>
-            <span id="city-name"></span>
-
-            <h2>Temperature: <span id="temperature"></span></h2>
-            <h2>Humidity: <span id="humidity"></span></h2>
-            <h2>Wind Speed: <span id="wind"></span></h2>
-            <h2>UV Index: <span id="uv"></span></h2>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Cards for 5 day forecast -->
-    <div
-      id="forecast"
-      class="container-sm pb-5 row"
-      style="background-color: white;"
-    ></div>
-
+      <!-- End container -->
+    </main>
     <!-- For Bootstrap, jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
