@@ -1,12 +1,27 @@
 //Prepping the document
 $(document).ready(function () {
-  var history = JSON.parse(window.localStorage.getItem("history")) || [];
   //Open Weather Map api key
   var APIKey = "5e9fabbb04f6d4dfc5866a965bc0007c";
   //Array for searched cities
   var cities = [];
+  //moment.js for the date
   var now = moment().format("(MM/DD/YYYY)");
   $("#currentDay").text(now);
+
+  var history = JSON.parse(window.localStorage.getItem("history"));
+  var lastSearch;
+  if (history) {
+    lastCity = history[history.length - 1];
+    showLastCity();
+    searchWeather();
+  }
+
+  function showLastCity() {
+    if (history) {
+      renderCities;
+    }
+  }
+
   //This is a click function for the search feature
 
   $("#query-btn").on("click", function (event) {
@@ -78,8 +93,7 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (forecast) {
       $("#forecast").empty();
-      console.log(forecastURL);
-      console.log(forecast);
+
       for (var i = 0; i < forecast.list.length; i++) {
         if (forecast.list[i].dt_txt.indexOf("15:00:00") !== -1) {
           var card = $("<div>").addClass("card text-white forecast-card");
@@ -130,7 +144,5 @@ $(document).ready(function () {
   function displayCityInfo() {
     var city = $(this).attr("data-name");
     searchWeather(city);
-  }
-  if (history.length > 0) {
   }
 });
