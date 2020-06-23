@@ -36,7 +36,7 @@ $(document).ready(function () {
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
       "&apikey=5e9fabbb04f6d4dfc5866a965bc0007c";
-
+    // AJAX call to openweathermap api
     $.ajax({
       url: queryURL,
       method: "GET",
@@ -103,6 +103,7 @@ $(document).ready(function () {
       });
     });
 
+    //This section is for the 5 day forecast
     var forecastURL =
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
       city +
@@ -119,9 +120,10 @@ $(document).ready(function () {
           var card = $("<div>").addClass("card text-white forecast-card");
           var col = $("<div>").addClass("col-sm-2");
           var cardBody = $("<div>").addClass("card-body");
-          var cardTitle = $("<h3>")
-            .addClass("card-title")
-            .text(new Date(forecast.list[i].dt_txt).toLocaleDateString());
+          var now = moment().format("(MM/DD/YYYY)");
+          $("#currentDay").text(now);
+          var cardTitle = $("<h3>").addClass("card-title").text(now);
+          // .text(new Date(forecast.list[i].dt_txt).toLocaleDateString());
           var cardImage = $("<img>").attr(
             "src",
             "https://openweathermap.org/img/w/" +
