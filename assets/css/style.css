@@ -41,6 +41,26 @@ header {
   margin-bottom: 10px;
 }
 
+.uv-green {
+  background-color: green;
+}
+
+.uv-yellow {
+  background-color: yellow;
+}
+
+.uv-orange {
+  background-color: orange;
+}
+
+.uv-red {
+  background-color: red;
+}
+
+#uv {
+  border-radius: 5px;
+  color: white;
+}
 .card-body {
   font-size: 20px;
   line-height: 2.5rem;

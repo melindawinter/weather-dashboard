@@ -8,26 +8,23 @@ $(document).ready(function () {
   var now = moment().format("(MM/DD/YYYY)");
   $("#currentDay").text(now);
 
-  var history = JSON.parse(window.localStorage.getItem("history"));
-  var lastSearch;
-  if (history) {
-    lastCity = history[history.length - 1];
-    showLastCity();
-    searchWeather();
+  //Creates the history array in local storage
+  var history = JSON.parse(window.localStorage.getItem("history")) || [];
+
+  //To get the last searched city
+  if (history.length) {
+    var lastCity = history[history.length - 1];
+    console.log(lastCity + " this is the last city");
+    searchWeather(lastCity);
   }
 
-  function showLastCity() {
-    if (history) {
-      renderCities;
-    }
-  }
-
+  renderCities();
   //This is a click function for the search feature
 
   $("#query-btn").on("click", function (event) {
     event.preventDefault();
     var city = $("#city-input").val().trim();
-    console.log(city);
+
     cities.push(city);
 
     renderCities();
@@ -45,6 +42,13 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (response) {
       // Display city name, current date, and weather image
+      $("#city-form").trigger("reset");
+
+      if (history.length) {
+        lastCity = history[history.length - 1];
+        console.log(lastCity + " within event listener");
+      }
+
       $("#city-name").text(response.name);
 
       $("#weather-image").attr(
@@ -79,6 +83,22 @@ $(document).ready(function () {
         url: urlUV,
         method: "GET",
       }).then(function (UVresponse) {
+        var uvIndex = UVresponse.value;
+        var uvDiv = $("#uv");
+        if (uvIndex < 3) {
+          uvDiv.removeClass("uv-yellow uv-orange uv-red");
+          uvDiv.addClass("uv-green");
+        } else if (uvIndex >= 3 && uvIndex < 6) {
+          uvDiv.removeClass("uv-green uv-orange uv-red");
+          uvDiv.addClass("uv-yellow");
+        } else if (uvIndex >= 6 && uvIndex < 8) {
+          uvDiv.removeClass("uv-yellow uv-green uv-red");
+          uvDiv.addClass("uv-orange");
+        } else {
+          uvDiv.removeClass("uv-yellow uv-orange uv-green");
+          uvDiv.addClass("uv-red");
+        }
+        console.log(uvIndex);
         $("#uv").text(UVresponse.value);
       });
     });
@@ -125,7 +145,6 @@ $(document).ready(function () {
     });
   }
 
-  renderCities();
   //This function adds each searched city to the history list as a button
   function renderCities() {
     $("#searched-cities").empty();
