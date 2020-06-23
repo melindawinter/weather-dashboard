@@ -33,7 +33,7 @@ $(document).ready(function () {
 
   function searchWeather(city) {
     var queryURL =
-      "http://api.openweathermap.org/data/2.5/weather?q=" +
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
       "&apikey=5e9fabbb04f6d4dfc5866a965bc0007c";
 
@@ -53,7 +53,7 @@ $(document).ready(function () {
 
       $("#weather-image").attr(
         "src",
-        "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
+        "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
       );
 
       // Display temperature in fahrenheit
@@ -72,7 +72,7 @@ $(document).ready(function () {
       var lon = response.coord.lon;
 
       var urlUV =
-        "http://api.openweathermap.org/data/2.5/uvi?appid=" +
+        "https://api.openweathermap.org/data/2.5/uvi?appid=" +
         APIKey +
         "&lat=" +
         lat +
@@ -104,7 +104,7 @@ $(document).ready(function () {
     });
 
     var forecastURL =
-      "http://api.openweathermap.org/data/2.5/forecast?q=" +
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
       city +
       "&apikey=5e9fabbb04f6d4dfc5866a965bc0007c&units=imperial";
 
@@ -124,7 +124,7 @@ $(document).ready(function () {
             .text(new Date(forecast.list[i].dt_txt).toLocaleDateString());
           var cardImage = $("<img>").attr(
             "src",
-            "http://openweathermap.org/img/w/" +
+            "https://openweathermap.org/img/w/" +
               forecast.list[i].weather[0].icon +
               ".png"
           );
