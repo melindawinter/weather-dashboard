@@ -6,6 +6,7 @@
 
 body {
   background-color: #87ceeb;
+  background-image: url("clouds5.jpg");
 }
 /* Styling for the header */
 header {
@@ -23,15 +24,18 @@ header {
   background-color: #567e9c;
 }
 
+.search-card {
+  margin-bottom: 25px;
+}
+
 #city-input {
   border: solid #15446f 3px;
   padding: 2px 2px;
 }
 
 #query-btn {
-  background-color: #15446f;
-  color: white;
-  height: 50px;
+  background-color: white;
+  color: #15446f;
 }
 
 .list-group-item {
@@ -76,7 +80,7 @@ header {
 }
 
 .forecast-card {
-  background-color: #15446f;
+  background-color: #567e9c;
   margin-bottom: 25px;
 }
 
