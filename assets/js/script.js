@@ -7,6 +7,7 @@ $(document).ready(function () {
   //moment.js for the date
   var now = moment().format("(MM/DD/YYYY)");
   $("#currentDay").text(now);
+  console.log(now, "The current time");
 
   //Creates the history array in local storage
   var history = JSON.parse(window.localStorage.getItem("history")) || [];
@@ -39,7 +40,7 @@ $(document).ready(function () {
     // AJAX call to openweathermap api
     $.ajax({
       url: queryURL,
-      method: "GET",
+      method: "GET"
     }).then(function (response) {
       // Display city name, current date, and weather image
       $("#city-form").trigger("reset");
@@ -81,7 +82,7 @@ $(document).ready(function () {
 
       $.ajax({
         url: urlUV,
-        method: "GET",
+        method: "GET"
       }).then(function (UVresponse) {
         var uvIndex = UVresponse.value;
         var uvDiv = $("#uv");
@@ -111,18 +112,19 @@ $(document).ready(function () {
 
     $.ajax({
       url: forecastURL,
-      method: "GET",
+      method: "GET"
     }).then(function (forecast) {
       $("#forecast").empty();
-
+      console.log(forecast);
       for (var i = 0; i < forecast.list.length; i++) {
         if (forecast.list[i].dt_txt.indexOf("15:00:00") !== -1) {
           var card = $("<div>").addClass("card text-white forecast-card");
           var col = $("<div>").addClass("col-sm-2");
           var cardBody = $("<div>").addClass("card-body");
-          var now = moment().format("(MM/DD/YYYY)");
-          $("#currentDay").text(now);
-          var cardTitle = $("<h3>").addClass("card-title").text(now);
+          // var now = moment().format("(MM/DD/YYYY)");
+          var date = forecast.list[i].dt_txt;
+          // $("#currentDay").text(date);
+          var cardTitle = $("<h3>").addClass("card-title").text(date);
           // .text(new Date(forecast.list[i].dt_txt).toLocaleDateString());
           var cardImage = $("<img>").attr(
             "src",
